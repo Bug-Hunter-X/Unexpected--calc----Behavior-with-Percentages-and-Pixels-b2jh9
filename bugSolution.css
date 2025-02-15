@@ -1,0 +1,19 @@
+Several solutions can mitigate the unexpected behavior:
+
+1. **Avoid Mixing Units:** Where possible, try to avoid combining percentage and pixel units within `calc()`. If your layout allows, use only percentages or only pixels.
+
+2. **Use a JavaScript Solution (Less Ideal):** If you absolutely must use mixed units in `calc()`, you could resort to JavaScript to dynamically calculate the width based on the viewport or parent element's size. This is less elegant than a pure CSS solution but offers more control.
+
+3. **Browser-Specific Workarounds:** In some cases, applying browser-specific prefixes or using alternative CSS properties could help. This is not always a guaranteed solution but may be worth investigating if other approaches fail.
+
+4. **Container Sizing:**  Ensure the parent element of the element using `calc()` has explicitly defined dimensions (either in percentages or pixels).  Ambiguous parent dimensions can contribute to calculation errors.  Example of corrected CSS:
+```css
+/* bugSolution.css */
+.container {
+  width: 80%; /* Define explicit width for the parent container */
+}
+
+.element {
+  width: calc(50% - 10px);
+}
+```
